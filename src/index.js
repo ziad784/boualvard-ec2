@@ -15,7 +15,11 @@ const https = require("httpolyglot")
 const app = express() // create express app
 const port = process.env.PORT||4000
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+  origin:["http://localhost:3000","https://boualvard.com","https://boualvard.com/"],
+  methods:["POST","GET"],
+  credentials: true
+}));
 app.use(express.static(__dirname))
 headers= {
   "Access-Control-Allow-Headers" : "X-Requested-With,content-type",
