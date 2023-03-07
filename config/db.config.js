@@ -25,14 +25,9 @@ const mysql = require('mysql');
 //   database: 'mazola-prod-v3',
 //   debug: false
 // });    
-const dbConn = mysql.createPool({
-  connectionLimit: 100, //important
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'boulevard',
-  debug: false
-});    
+
+
+const dbConn = mysql.createPool('mysql://vhqf50il0kasobqeb1kd:pscale_pw_4CmYc2PGjSgNbtE3Mj7IRG1uAXpE7D9qxfhtMlQOlgi@aws-eu-west-2.connect.psdb.cloud/boualvard?ssl={"rejectUnauthorized":true}');    
 dbConn.getConnection(function (err, connection) {
   if (err) throw err;
   console.log("Database Connected!");
