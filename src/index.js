@@ -13,7 +13,7 @@ const fs = require("fs")
 const https = require("httpolyglot")
 
 const app = express() // create express app
-const port = process.env.PORT||443
+const port = process.env.PORT||4000
 app.use(express.json())
 app.use(cors({
   origin:["http://localhost:3000","https://boualvard.com","https://boualvard.com/"],
@@ -81,15 +81,9 @@ app.use('/api/v1', recipeRouter)
 app.use('/api/v1', bannerRoutes)
 app.use('/api/v1', homeRouter)
 
-const options = {
 
-  // key: fs.readFileSync("./key.pem","utf-8"),
-  // cert: fs.readFileSync("./cert.pem","utf-8")
-  
-}
 
-const httpsServer = https.createServer(options,app)
 // listen for requests
-httpsServer.listen(port, () => {
+app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
 })
